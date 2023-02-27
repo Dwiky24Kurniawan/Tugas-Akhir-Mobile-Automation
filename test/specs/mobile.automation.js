@@ -47,7 +47,7 @@ describe('Test diet-meal.apk', () => {
         await (button_selesai).click()
     })
 
-    it('User see main page', async() => {
+    it('User see home page', async() => {
         const hi_homescreen = await $("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[1]/android.view.ViewGroup/android.widget.TextView[1]")
         await expect(hi_homescreen).toHaveText('Hi,')
 
