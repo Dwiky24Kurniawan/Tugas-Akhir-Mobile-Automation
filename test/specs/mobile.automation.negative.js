@@ -1,4 +1,3 @@
-import HomePage from '../POM/home.page';
 import WelcomePage from '../POM/welcome.page';
 
 describe('Test Negative diet-meal.apk', () => {
