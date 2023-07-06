@@ -8,7 +8,9 @@
     "wdio": "wdio run wdio.conf.js"
   },
   "keywords": [
-    "mobile"
+    "mobile automation",
+    "webdriverio",
+    "appium"
   ],
   "author": "Dwiky Kurniawan",
   "license": "ISC",

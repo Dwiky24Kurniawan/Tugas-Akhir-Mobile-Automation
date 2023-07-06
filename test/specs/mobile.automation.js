@@ -1,60 +1,35 @@
-describe('Test diet-meal.apk', () => {
-    it('Apps splash screen', async () => {
-        const foobar = await $('/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.TextView')
-        await expect(foobar).toHaveText('Empat Sehat, Lima Sempurna')
-    })
+import HomePage from '../POM/home.page';
+import WelcomePage from '../POM/welcome.page';
 
-    it('Main Apps opened', async() => {
-        const header_welcome = await $('/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.TextView[1]')
-        await expect(header_welcome).toHaveText('Welcome...')
+describe('Test Positive diet-meal.apk', () => {
+    it('TC_001 - Positive - Add User with valid input', async () => {
+        await expect(WelcomePage.splashScreen).toExist()
+        await expect(WelcomePage.splashScreen).toHaveText('Empat Sehat, Lima Sempurna')
 
-        const header_desc = await $('/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.TextView[2]')
-        await expect(header_desc).toHaveText('Isi formulir untuk membuat/menambahkan user')
-    })
+        await expect(WelcomePage.headerWelcome).toExist()
+        await expect(WelcomePage.headerWelcome).toHaveText('Welcome...')
+        await expect(WelcomePage.headerDesc).toExist()
+        await expect(WelcomePage.headerDesc).toHaveText('Isi formulir untuk membuat/menambahkan user')
 
-    it('User input name', async() => {
-        const input_name = await $("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/android.widget.FrameLayout/android.widget.EditText")
-        await (input_name).addValue("Dwiky")
-    })
+        await WelcomePage.inputName.setValue("Dwiky")
 
-    it('User input weight', async() => {
-        const input_wieght = await $("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[2]/android.widget.FrameLayout/android.widget.EditText")
-        await (input_wieght).addValue("60")
-    })
+        await WelcomePage.inputWeight.setValue("60")
 
-    it('User input height', async() => {
-        const input_wieght = await $("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[3]/android.widget.FrameLayout/android.widget.EditText")
-        await (input_wieght).addValue("175")
-    })
+        await WelcomePage.inputHeight.setValue("175")
 
-    it('User choose gender : male', async() => {
-        const choose_sex_male = await $("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.RadioGroup/android.widget.RadioButton[1]")
-        await (choose_sex_male).click()
-    })
+        await WelcomePage.chooseSexMale.click()
 
-    it('User click "next" button', async() => {
-        const button_next = await $("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.Button")
-        await (button_next).click()
-    })
+        await WelcomePage.buttonNext.click()
 
-    it('User choose activity', async() => {
-        const choose_activity = await $("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.RadioGroup/android.widget.RadioButton[4]")
-        await (choose_activity).click()
-    })
+        await WelcomePage.chooseActivity.click()
 
-    it('User click button "selesai"', async() => {
-        const button_selesai = await $("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.Button")
-        await (button_selesai).click()
-    })
+        await WelcomePage.buttonSelesai.click()
 
-    it('User see home page', async() => {
-        const hi_homescreen = await $("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[1]/android.view.ViewGroup/android.widget.TextView[1]")
-        await expect(hi_homescreen).toHaveText('Hi,')
-
-        const hi_homescreen_desc = await $("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[1]/android.view.ViewGroup/android.widget.TextView[2]")
-        await expect(hi_homescreen_desc).toHaveText('Ready to some calories today?')
-
-        const home = await $("//android.widget.FrameLayout[@content-desc='Home']/android.view.ViewGroup/android.widget.TextView")
-        await expect(home).toHaveText('Home')
+        await expect(HomePage.hiHomeScreen).toExist()
+        await expect(HomePage.hiHomeScreen).toHaveText('Hi,')
+        await expect(HomePage.hiHomeScreenDescription).toExist()
+        await expect(HomePage.hiHomeScreenDescription).toHaveText('Ready to some calories today?')
+        await expect(HomePage.buttonHome).toExist()
+        await expect(HomePage.buttonHome).toHaveText('Home')
     })
 })
