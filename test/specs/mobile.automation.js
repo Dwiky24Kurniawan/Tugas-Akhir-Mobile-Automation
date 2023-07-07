@@ -1,7 +1,7 @@
 import HomePage from '../POM/home.page';
 import WelcomePage from '../POM/welcome.page';
 
-describe('Test Positive diet-meal.apk', () => {
+describe('Test Suite diet-meal.apk', () => {
     it('TC_001 - Positive - Add User with valid input', async () => {
         await expect(WelcomePage.splashScreen).toExist()
         await expect(WelcomePage.splashScreen).toHaveText('Empat Sehat, Lima Sempurna')
@@ -32,9 +32,7 @@ describe('Test Positive diet-meal.apk', () => {
         await expect(HomePage.buttonHome).toExist()
         await expect(HomePage.buttonHome).toHaveText('Home')
     })
-})
 
-describe('Test Negative diet-meal.apk', () => {
     it('TC_002 - Negative - Add User with invalid input', async () => {
         await driver.closeApp();
         await driver.launchApp();
